@@ -41,12 +41,6 @@ const jsonLd = {
       closes: business.hours.close,
     },
   }),
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: business.rating.value,
-    reviewCount: business.rating.count,
-    bestRating: 5,
-  },
   sameAs: Object.values(business.social).filter(Boolean),
 }
 

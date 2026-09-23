@@ -47,7 +47,6 @@ export const business = {
   whatsapp: '50489881108',
   whatsappDisplay: '+504 8988-1108',
 
-  rating: { value: 4.6, count: 46 },
   priceRange: { min: 200, max: 800, currency: 'HNL', symbol: 'L' },
   services: ['Comer en el local', 'Para llevar', 'Delivery'] as const,
 
@@ -66,8 +65,6 @@ export const business = {
     tiktok: '',
   },
 
-  // TODO: reemplazar por el enlace directo a la ficha de Google (Compartir → Copiar enlace).
-  googleReviewsUrl: 'https://www.google.com/maps/search/?api=1&query=Per+Lei+pizzer%C3%ADa+Santa+Luc%C3%ADa+Francisco+Moraz%C3%A1n',
 } as const
 
 export const messages = {

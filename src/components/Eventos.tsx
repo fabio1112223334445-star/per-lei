@@ -46,7 +46,7 @@ export function Eventos() {
                   </p>
                 </blockquote>
                 <figcaption className="kicker mt-5 text-ink-muted">
-                  — {weddingReview.author} · {weddingReview.source}
+                  — {weddingReview.author}
                 </figcaption>
               </figure>
             )}

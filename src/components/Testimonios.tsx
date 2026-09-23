@@ -1,6 +1,4 @@
-import { business } from '#/data/business'
 import { reviews } from '#/data/reviews'
-import { ArrowUpRightIcon } from './icons'
 import { SectionHeading, Stars } from './ui'
 
 const OFFSETS = ['md:mt-0', 'md:mt-24', 'md:mt-10']
@@ -14,24 +12,15 @@ export function Testimonios() {
             Lo que <em className="italiano text-tomate">dicen</em>
           </SectionHeading>
 
-          <div className="reveal flex items-end gap-5 md:col-span-4 md:col-start-9">
-            <p className="display text-[clamp(6rem,26vw,11rem)] leading-[0.75] tabular-nums">
-              {business.rating.value.toLocaleString('es-HN')}
-            </p>
-            <div className="pb-2">
-              <Stars />
-              <p className="mt-2 text-sm text-ink-muted">
-                {business.rating.count} reseñas
-                <br />
-                en Google
-              </p>
-            </div>
-          </div>
+          <p className="reveal max-w-[34ch] font-display text-[clamp(1.4rem,5vw,1.9rem)] leading-[1.2] tracking-[-0.015em] text-ink-muted md:col-span-4 md:col-start-9 [font-variation-settings:'opsz'_48]">
+            Familias, amigos y hasta una boda: palabras de quienes ya se sentaron{' '}
+            <em className="italiano text-tomate">a tavola</em>.
+          </p>
         </div>
 
         <ul
           className="reveal no-scrollbar -mx-4 mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 md:mx-0 md:mt-20 md:grid md:grid-cols-3 md:items-start md:gap-6 md:overflow-visible md:px-0"
-          aria-label="Reseñas de clientes"
+          aria-label="Testimonios de clientes"
           tabIndex={0}
         >
           {reviews.map((r, i) => (
@@ -45,13 +34,7 @@ export function Testimonios() {
                   <p>{r.text}</p>
                 </blockquote>
                 <figcaption className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-4">
-                  <span>
-                    <span className="block font-semibold">{r.author}</span>
-                    <span className="kicker text-[0.65rem] text-ink-muted">
-                      {r.source}
-                      {r.badge && ` · ${r.badge}`}
-                    </span>
-                  </span>
+                  <span className="font-semibold">{r.author}</span>
                   <Stars />
                 </figcaption>
               </figure>
@@ -62,18 +45,6 @@ export function Testimonios() {
           Desliza <span className="text-tomate">→</span>
         </p>
 
-        <a
-          href={business.googleReviewsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group mt-10 inline-flex min-h-12 items-center gap-3 font-display text-2xl tracking-[-0.01em] md:mt-16 md:text-3xl"
-        >
-          <span className="underline decoration-oro decoration-1 underline-offset-[0.25em] transition-colors group-hover:decoration-tomate">
-            Ver más reseñas en Google
-          </span>
-          <ArrowUpRightIcon className="size-6 text-tomate transition-transform duration-300 ease-out-expo group-hover:translate-x-1 group-hover:-translate-y-1" />
-          <span className="sr-only">(se abre en otra pestaña)</span>
-        </a>
       </div>
     </section>
   )

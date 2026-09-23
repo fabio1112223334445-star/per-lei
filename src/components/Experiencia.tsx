@@ -103,7 +103,7 @@ export function Experiencia() {
         </div>
 
         <div className="reveal mt-12 md:mt-16">
-          <p className="kicker text-ink-muted">Lo que más mencionan en Google</p>
+          <p className="kicker text-ink-muted">Lo que más mencionan nuestros clientes</p>
           <ul className="mt-4 flex flex-wrap gap-2">
             {MENTIONS.map((m) => (
               <li key={m} className="rounded-full border border-line px-4 py-2 text-sm">
