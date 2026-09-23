@@ -15,7 +15,7 @@ const weddingReview = reviews.find((r) => r.author === 'Delia Isaula')
 
 export function Eventos() {
   return (
-    <section id="eventos" aria-labelledby="eventos-title" className="notte grain relative overflow-hidden py-20 md:py-32">
+    <section id="eventos" aria-labelledby="eventos-title" className="cv-auto notte grain relative overflow-hidden py-20 md:py-32">
       {/* "per sempre" gigante que sangra fuera del grid */}
       <p
         aria-hidden="true"

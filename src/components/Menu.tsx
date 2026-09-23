@@ -1,5 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from 'react'
-import { AnimatePresence, LazyMotion, MotionConfig, domMax, m } from 'motion/react'
+import { AnimatePresence, LazyMotion, MotionConfig, m } from 'motion/react'
 import { business, links, messages } from '#/data/business'
 import { formatPrice, menu, type MenuItem } from '#/data/menu'
 import { WhatsAppIcon } from './icons'
@@ -7,6 +7,7 @@ import { Photo } from './Photo'
 import { SectionHeading } from './ui'
 
 const EASE = [0.16, 1, 0.3, 1] as const
+const loadFeatures = () => import('#/lib/motion-features').then((mod) => mod.default)
 
 function FeaturedCard({ item, index }: { item: MenuItem; index: number }) {
   return (
@@ -26,7 +27,7 @@ function FeaturedCard({ item, index }: { item: MenuItem; index: number }) {
         </div>
         <p className="text-[0.95rem] text-ink-muted">{item.description}</p>
         {item.tags && (
-          <p className="kicker mt-auto flex gap-3 pt-3 text-oro">
+          <p className="kicker mt-auto flex gap-3 pt-3 text-tomate">
             {item.tags.map((t) => (
               <span key={t}>{t}</span>
             ))}
@@ -65,7 +66,7 @@ export function Menu() {
   }
 
   return (
-    <section id="carta" aria-labelledby="carta-title" className="relative bg-surface py-20 md:py-32">
+    <section id="carta" aria-labelledby="carta-title" className="cv-auto relative bg-surface py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <SectionHeading num="03" kicker="La carta" italian="dal forno alla tavola" id="carta-title" className="md:col-span-7">
@@ -83,7 +84,7 @@ export function Menu() {
           </div>
         </div>
 
-        <LazyMotion features={domMax} strict>
+        <LazyMotion features={loadFeatures} strict>
           <MotionConfig reducedMotion="user">
             {/* Tabs */}
             <div
@@ -111,7 +112,7 @@ export function Menu() {
                     }`}
                   >
                     <span className="font-display text-xl tracking-[-0.01em] md:text-2xl">{c.label}</span>
-                    <span className="italiano hidden text-sm text-oro sm:inline">{c.italian}</span>
+                    <span className="italiano hidden text-sm text-ink-muted sm:inline">{c.italian}</span>
                     {selected && (
                       <m.span
                         layoutId="tab-underline"

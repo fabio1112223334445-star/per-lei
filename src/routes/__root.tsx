@@ -2,7 +2,8 @@ import type { ReactNode } from 'react'
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import frauncesUrl from '@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url'
 import { business } from '#/data/business'
-import appCss from '../styles.css?url'
+// CSS inline en el <head>: evita una petición bloqueante extra en la primera carga.
+import appCss from '../styles.css?inline'
 
 const title = 'Per Lei — Pizzería artesanal de leña en Santa Lucía, Honduras'
 const ogImage = `${business.url}/og.jpg` // TODO: crear /public/og.jpg (1200×630) con foto real del horno o una pizza
@@ -77,13 +78,13 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: 'preload', href: frauncesUrl, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
-      { rel: 'stylesheet', href: appCss },
       { rel: 'canonical', href: business.url },
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
       { rel: 'icon', href: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'manifest', href: '/manifest.webmanifest' },
     ],
+    styles: [{ children: appCss }],
     scripts: [
       { children: bootScript },
       { type: 'application/ld+json', children: JSON.stringify(jsonLd) },

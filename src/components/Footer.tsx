@@ -11,7 +11,7 @@ export function Footer() {
   const socials = (Object.keys(business.social) as (keyof typeof business.social)[]).filter((k) => business.social[k])
 
   return (
-    <footer className="notte grain relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-12">
+    <footer className="cv-auto notte grain relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-12">
       <div className="relative z-[2] mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">

@@ -34,7 +34,7 @@ export function Galeria() {
   const current = index !== null ? gallery[index] : null
 
   return (
-    <section id="galeria" aria-labelledby="galeria-title" className="relative py-20 md:py-32">
+    <section id="galeria" aria-labelledby="galeria-title" className="cv-auto relative py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <SectionHeading num="04" kicker="Galería" italian="guardare, poi assaggiare" id="galeria-title" className="md:col-span-8">
@@ -55,8 +55,8 @@ export function Galeria() {
                 type="button"
                 onClick={() => setIndex(i)}
                 className="press group relative block h-full w-full overflow-hidden text-left"
-                aria-label={`Ver en grande: ${photos[g.id].alt}`}
               >
+                <span className="sr-only">Ver en grande: </span>
                 <span className="absolute inset-0 block transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]">
                   <Photo id={g.id} sizes="(min-width: 768px) 33vw, 50vw" />
                 </span>

@@ -7,7 +7,7 @@ const OFFSETS = ['md:mt-0', 'md:mt-24', 'md:mt-10']
 
 export function Testimonios() {
   return (
-    <section aria-labelledby="resenas-title" className="relative overflow-hidden bg-surface py-20 md:py-32">
+    <section aria-labelledby="resenas-title" className="cv-auto relative overflow-hidden bg-surface py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <SectionHeading num="05" kicker="Reseñas" italian="parole di chi è venuto" id="resenas-title" className="md:col-span-7">

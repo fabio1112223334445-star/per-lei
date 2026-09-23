@@ -4,7 +4,7 @@ import { SectionHeading } from './ui'
 
 export function Reservas() {
   return (
-    <section id="reservas" aria-labelledby="reservas-title" className="relative py-20 md:py-32">
+    <section id="reservas" aria-labelledby="reservas-title" className="cv-auto relative py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <SectionHeading num="07" kicker="Reservas y ubicación" italian="ti aspettiamo" id="reservas-title">
           Una mesa <em className="italiano text-tomate">per lei</em>
@@ -48,22 +48,22 @@ export function Reservas() {
 
           <dl className="grid gap-6 p-6 sm:p-8 md:w-[22rem] md:p-10 lg:w-[26rem]">
             <div>
-              <dt className="kicker flex items-center gap-2 opacity-80">
+              <dt className="kicker flex items-center gap-2 opacity-95">
                 <ClockIcon className="size-4" /> Horario
               </dt>
               <dd className="mt-2 font-display text-2xl leading-tight">{business.hoursLabel}</dd>
             </div>
             <div>
-              <dt className="kicker flex items-center gap-2 opacity-80">
+              <dt className="kicker flex items-center gap-2 opacity-95">
                 <MapPinIcon className="size-4" /> Dirección
               </dt>
               <dd className="mt-2">
                 <address className="not-italic">{fullAddress}</address>
-                <span className="mt-1 block font-mono text-sm opacity-80">{business.address.plusCode}</span>
+                <span className="mt-1 block font-mono text-sm opacity-95">{business.address.plusCode}</span>
               </dd>
             </div>
             <div>
-              <dt className="kicker opacity-80">Servicios</dt>
+              <dt className="kicker opacity-95">Servicios</dt>
               <dd className="mt-2">{business.services.join(' · ')}</dd>
             </div>
           </dl>

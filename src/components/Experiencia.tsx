@@ -47,7 +47,7 @@ const HIGHLIGHTS: Highlight[] = [
 
 export function Experiencia() {
   return (
-    <section aria-labelledby="experiencia-title" className="relative py-20 md:py-32">
+    <section aria-labelledby="experiencia-title" className="cv-auto relative py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="md:grid md:grid-cols-12">
           <SectionHeading
