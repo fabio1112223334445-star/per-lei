@@ -13,7 +13,7 @@ export type Tone = 'tomate' | 'carbon' | 'albahaca'
 export interface PhotoData {
   src: string
   alt: string
-  /** Etiqueta mono del placeholder: "FOTO · {label}" */
+  /** Nombre corto de referencia (no se muestra en el sitio) */
   label: string
   art: Art
   tone: Tone

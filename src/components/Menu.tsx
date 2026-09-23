@@ -95,7 +95,7 @@ function useCursorPreview(enabled: boolean) {
     photo &&
     createPortal(
       <div ref={el} aria-hidden="true" className={`cursor-preview overflow-hidden shadow-vela ${visible ? 'is-visible' : ''}`}>
-        <Photo id={photo} hideLabel sizes="240px" />
+        <Photo id={photo} sizes="240px" />
       </div>,
       document.body,
     )

@@ -59,7 +59,7 @@ export function Experiencia() {
           {/* i. grande, texto sobre imagen */}
           <article className="reveal group relative min-h-[28rem] overflow-hidden md:col-span-7 md:row-span-2 md:min-h-[44rem]">
             <div className="absolute inset-0 transition-transform duration-700 ease-out-expo group-hover:scale-[1.03]">
-              <Photo id={HIGHLIGHTS[0].photo} hideLabel sizes="(min-width: 768px) 58vw, 100vw" />
+              <Photo id={HIGHLIGHTS[0].photo} sizes="(min-width: 768px) 58vw, 100vw" />
             </div>
             <div className="absolute inset-0 z-[3] bg-gradient-to-t from-[#140f0c] via-[#140f0c]/40 to-transparent" />
             <div className="relative z-[4] flex h-full min-h-[inherit] flex-col justify-end p-6 text-[#f3eadb] md:p-10">
@@ -76,7 +76,7 @@ export function Experiencia() {
               }`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
-                <Photo id={h.photo} hideLabel sizes="(min-width: 768px) 18vw, 45vw" />
+                <Photo id={h.photo} sizes="(min-width: 768px) 18vw, 45vw" />
               </div>
               <div>
                 <div>
