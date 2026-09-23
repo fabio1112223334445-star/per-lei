@@ -55,7 +55,7 @@ export function Hero() {
       ref={ref}
       id="inicio"
       aria-labelledby="hero-title"
-      className="relative overflow-hidden pt-[5.5rem] pb-10 md:pt-28 md:pb-14"
+      className="relative overflow-clip pt-[5.5rem] pb-10 md:pt-28 md:pb-14"
     >
       {/* grano de película animado, solo en el hero */}
       <div aria-hidden="true" className="hero-grain" />

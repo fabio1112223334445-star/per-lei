@@ -7,7 +7,7 @@ const OFFSETS = ['md:mt-0', 'md:mt-24', 'md:mt-10']
 
 export function Testimonios() {
   return (
-    <section aria-labelledby="resenas-title" className="cv-auto relative overflow-hidden bg-surface py-20 md:py-32">
+    <section aria-labelledby="resenas-title" className="cv-auto relative overflow-clip bg-surface py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <SectionHeading italian="parole di chi è venuto" id="resenas-title" className="md:col-span-7">
@@ -30,12 +30,13 @@ export function Testimonios() {
         </div>
 
         <ul
-          className="no-scrollbar -mx-4 mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 md:mx-0 md:mt-20 md:grid md:grid-cols-3 md:items-start md:gap-6 md:overflow-visible md:px-0"
+          className="reveal no-scrollbar -mx-4 mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 md:mx-0 md:mt-20 md:grid md:grid-cols-3 md:items-start md:gap-6 md:overflow-visible md:px-0"
           aria-label="Reseñas de clientes"
+          tabIndex={0}
         >
           {reviews.map((r, i) => (
             <li key={r.author} className={`w-[86%] shrink-0 snap-center md:w-auto ${OFFSETS[i]}`}>
-              <figure className="reveal flex h-full flex-col bg-bg p-6 shadow-vela md:p-8">
+              <figure className="flex h-full flex-col bg-bg p-6 shadow-vela md:p-8">
                 <span aria-hidden="true" className="italiano -mb-6 text-8xl leading-none text-tomate">
                   “
                 </span>

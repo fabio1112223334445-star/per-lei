@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { links, messages } from '#/data/business'
 import { MenuIcon, XIcon } from './icons'
+import { ThemeToggle } from './ThemeToggle'
 
 const NAV = [
   { href: '#historia', label: 'Historia' },
@@ -20,6 +21,28 @@ export function Nav() {
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Sección visible → enlace activo (aria-current)
+  const [active, setActive] = useState('')
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) if (e.isIntersecting) setActive(`#${e.target.id}`)
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    for (const { href } of NAV) {
+      const el = document.querySelector(href)
+      if (el) io.observe(el)
+    }
+    const top = document.getElementById('inicio')
+    const clear = new IntersectionObserver(([e]) => e.isIntersecting && setActive(''), { rootMargin: '-45% 0px -50% 0px' })
+    if (top) clear.observe(top)
+    return () => {
+      io.disconnect()
+      clear.disconnect()
+    }
   }, [])
 
   useEffect(() => {
@@ -48,7 +71,8 @@ export function Nav() {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="kicker relative inline-flex min-h-12 items-center px-3 text-ink-muted transition-colors hover:text-ink after:absolute after:inset-x-3 after:bottom-3 after:h-px after:origin-left after:scale-x-0 after:bg-tomate after:transition-transform after:duration-300 after:ease-out-expo hover:after:scale-x-100"
+                  aria-current={active === item.href ? 'true' : undefined}
+                  className="kicker relative inline-flex min-h-12 items-center px-3 text-ink-muted transition-colors hover:text-ink after:absolute after:inset-x-3 after:bottom-3 after:h-px after:origin-left after:scale-x-0 after:bg-tomate after:transition-transform after:duration-300 after:ease-out-expo hover:after:scale-x-100 aria-[current]:text-ink aria-[current]:after:scale-x-100"
                 >
                   {item.label}
                 </a>
@@ -57,6 +81,7 @@ export function Nav() {
           </ul>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <a
               href={links.whatsapp(messages.reservar)}
               target="_blank"

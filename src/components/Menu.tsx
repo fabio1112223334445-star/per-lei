@@ -214,7 +214,12 @@ export function Menu() {
                 >
                   <h3 className="sr-only">{category.label}</h3>
                   {featured.length > 0 && (
-                    <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
+                    <div
+                      role="region"
+                      aria-label={`${category.label} destacados`}
+                      tabIndex={0}
+                      className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0"
+                    >
                       {featured.map((item) => (
                         <div key={item.name} className="w-[82%] shrink-0 snap-start md:w-auto">
                           <FeaturedCard item={item} tilt={fine} />
