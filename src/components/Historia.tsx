@@ -19,7 +19,7 @@ const CHAPTERS = [
 
 export function Historia() {
   return (
-    <section id="historia" aria-labelledby="historia-title" className="notte grain relative py-20 md:py-32">
+    <section id="historia" aria-labelledby="historia-title" className="historia-timeline notte grain relative py-20 md:py-32">
       <div className="relative z-[2] mx-auto grid max-w-[92rem] gap-12 px-4 sm:px-6 md:grid-cols-12 md:gap-8 lg:px-10">
         {/* Foto sticky (desktop) */}
         <div className="order-2 md:order-1 md:col-span-5">
@@ -30,7 +30,14 @@ export function Historia() {
                 className="absolute inset-0 translate-x-3 translate-y-3 border border-oro/50 md:translate-x-5 md:translate-y-5"
               />
               <div className="relative aspect-[4/5] overflow-hidden shadow-vela md:aspect-[3/4] md:max-h-[78vh]">
-                <Photo id="historiaHorno" sizes="(min-width: 768px) 40vw, 100vw" />
+                <div className="heat-zoom absolute inset-0">
+                  <Photo id="historiaHorno" sizes="(min-width: 768px) 40vw, 100vw" />
+                </div>
+                {/* el horno "se calienta" a medida que se lee la historia */}
+                <div
+                  aria-hidden="true"
+                  className="heat-glow pointer-events-none absolute inset-0 z-[3] bg-[radial-gradient(90%_60%_at_50%_100%,rgb(255_122_54/0.55),rgb(224_102_42/0.15)_45%,transparent_75%)] mix-blend-screen"
+                />
               </div>
             </div>
           </div>

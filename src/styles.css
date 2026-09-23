@@ -382,6 +382,216 @@
   background-size: 1.25rem 1.25rem;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   Fase 2 — motion ligado al scroll
+   ───────────────────────────────────────────────────────────── */
+
+/* Parallax del hero en 3 capas (resplandor, arco, palabras) */
+@keyframes par-glow {
+  to {
+    transform: translate3d(0, 22vh, 0);
+  }
+}
+@keyframes par-arch {
+  to {
+    transform: translate3d(0, 9vh, 0);
+  }
+}
+@keyframes par-per {
+  to {
+    transform: translate3d(0, -7vh, 0);
+  }
+}
+@keyframes par-lei {
+  to {
+    transform: translate3d(-5vw, -13vh, 0);
+  }
+}
+@supports (animation-timeline: scroll()) {
+  .par-glow,
+  .par-arch,
+  .par-per,
+  .par-lei {
+    animation-timing-function: linear;
+    animation-fill-mode: both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100vh;
+  }
+  .par-glow {
+    animation-name: par-glow;
+  }
+  .par-arch {
+    animation-name: par-arch;
+  }
+  .par-per {
+    animation-name: par-per;
+  }
+  .par-lei {
+    animation-name: par-lei;
+  }
+}
+/* Fallback: --hp (0→1) lo escribe JS en el hero cuando no hay scroll-driven animations */
+@supports not (animation-timeline: scroll()) {
+  .par-glow {
+    transform: translate3d(0, calc(var(--hp, 0) * 22vh), 0);
+  }
+  .par-arch {
+    transform: translate3d(0, calc(var(--hp, 0) * 9vh), 0);
+  }
+  .par-per {
+    transform: translate3d(0, calc(var(--hp, 0) * -7vh), 0);
+  }
+  .par-lei {
+    transform: translate3d(calc(var(--hp, 0) * -5vw), calc(var(--hp, 0) * -13vh), 0);
+  }
+}
+
+/* Brasas que suben desde el horno */
+.ember {
+  position: absolute;
+  bottom: 0;
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 999px;
+  background: radial-gradient(circle, #ffe2b0 0%, var(--brasa) 45%, transparent 72%);
+  opacity: 0;
+  animation: ember var(--d) linear var(--delay) infinite;
+  will-change: transform, opacity;
+}
+@keyframes ember {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.95;
+  }
+  65% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(var(--dx), -62vh, 0) scale(0.25);
+    opacity: 0;
+  }
+}
+@media (max-width: 767px) {
+  .ember:nth-child(n + 9) {
+    display: none;
+  }
+}
+
+/* Grano animado solo alrededor del hero */
+.hero-grain {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background-image: var(--noise);
+  background-size: 180px 180px;
+  opacity: 0.1;
+  animation: grain 0.9s steps(5) infinite;
+}
+@keyframes grain {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  20% {
+    transform: translate3d(-4%, 3%, 0);
+  }
+  40% {
+    transform: translate3d(3%, -5%, 0);
+  }
+  60% {
+    transform: translate3d(-2%, -3%, 0);
+  }
+  80% {
+    transform: translate3d(5%, 2%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+.is-offscreen .ember,
+.is-offscreen .hero-grain {
+  animation-play-state: paused;
+}
+
+/* Historia: el horno "se calienta" con el scroll */
+.historia-timeline {
+  view-timeline-name: --historia;
+}
+@keyframes heat-up {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes heat-zoom {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@supports (animation-timeline: view()) {
+  .heat-glow {
+    animation: heat-up linear both;
+    animation-timeline: --historia;
+    animation-range: cover 5% cover 55%;
+  }
+  .heat-zoom {
+    animation: heat-zoom linear both;
+    animation-timeline: --historia;
+    animation-range: cover 0% cover 70%;
+  }
+}
+@supports not (animation-timeline: view()) {
+  .heat-glow {
+    opacity: 0.75;
+  }
+}
+
+/* Tilt 3D de las tarjetas de la carta (solo puntero fino) */
+.tilt {
+  transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 500ms var(--ease-out-expo);
+}
+.tilt.is-tilting {
+  transition: transform 90ms linear;
+}
+.tilt-shine {
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgb(255 240 220 / 0.22), transparent 55%);
+  opacity: 0;
+  transition: opacity 300ms var(--ease-out-expo);
+}
+.tilt.is-tilting .tilt-shine {
+  opacity: 1;
+}
+
+/* Foto que sigue al cursor en la carta */
+.cursor-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 45;
+  pointer-events: none;
+  width: 15rem;
+  aspect-ratio: 4 / 5;
+  opacity: 0;
+  scale: 0.85;
+  transition:
+    opacity 250ms var(--ease-out-expo),
+    scale 350ms var(--ease-out-expo);
+  will-change: transform;
+}
+.cursor-preview.is-visible {
+  opacity: 1;
+  scale: 1;
+}
+
 /* Secciones bajo el pliegue: el navegador omite su layout/pintado hasta acercarse */
 .cv-auto {
   content-visibility: auto;
@@ -415,7 +625,25 @@
     transform: none !important;
   }
   .marquee-track,
-  .live-dot::before {
+  .live-dot::before,
+  .par-glow,
+  .par-arch,
+  .par-per,
+  .par-lei,
+  .heat-zoom,
+  .hero-grain {
     animation: none !important;
+    transform: none !important;
+  }
+  .ember,
+  .cursor-preview {
+    display: none !important;
+  }
+  .heat-glow {
+    animation: none !important;
+    opacity: 0.75 !important;
+  }
+  .tilt {
+    transform: none !important;
   }
 }

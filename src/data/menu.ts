@@ -21,12 +21,15 @@ export interface MenuCategory {
   id: string
   label: string
   italian: string
+  /** Foto que acompaña al cursor en la lista (desktop) cuando el ítem no tiene foto propia */
+  cover: PhotoId
   items: MenuItem[]
 }
 
 export const menu: MenuCategory[] = [
   {
     id: 'pizzas',
+    cover: 'pizzaEspecial',
     label: 'Pizzas',
     italian: 'dal forno',
     items: [
@@ -63,6 +66,7 @@ export const menu: MenuCategory[] = [
   },
   {
     id: 'entradas',
+    cover: 'tablaQuesos',
     label: 'Entradas y Tablas',
     italian: 'per cominciare',
     items: [
@@ -89,6 +93,7 @@ export const menu: MenuCategory[] = [
   },
   {
     id: 'bebidas',
+    cover: 'sangria',
     label: 'Bebidas',
     italian: 'da bere',
     items: [
@@ -109,6 +114,7 @@ export const menu: MenuCategory[] = [
   },
   {
     id: 'postres',
+    cover: 'postre',
     label: 'Postres',
     italian: 'dolci',
     items: [
