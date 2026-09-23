@@ -1,4 +1,4 @@
-import { business, fullAddress, links } from '#/data/business'
+import { business, fullAddress, links, messages } from '#/data/business'
 
 const SOCIAL_LABELS: Record<keyof typeof business.social, string> = {
   linktree: 'Linktree',
@@ -31,6 +31,16 @@ export function Footer() {
               <li>
                 <a href={links.tel} className="inline-flex min-h-11 items-center underline decoration-line underline-offset-4 hover:decoration-tomate">
                   {business.phone.international}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={links.whatsapp(messages.reservar)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center underline decoration-line underline-offset-4 hover:decoration-tomate"
+                >
+                  WhatsApp {business.whatsappDisplay}
                 </a>
               </li>
               {socials.length > 0 ? (

@@ -38,8 +38,9 @@ export const business = {
     international: '+504 2779-0094',
     e164: '+50427790094',
   },
-  // TODO: 2779-0094 es un número fijo. Confirmar que tiene WhatsApp Business; si no, cambiar por el celular del negocio.
-  whatsapp: '50427790094',
+  // WhatsApp del negocio (+504 8988-1108). Las llamadas siguen yendo al fijo.
+  whatsapp: '50489881108',
+  whatsappDisplay: '+504 8988-1108',
 
   rating: { value: 4.6, count: 46 },
   priceRange: { min: 200, max: 800, currency: 'HNL', symbol: 'L' },
