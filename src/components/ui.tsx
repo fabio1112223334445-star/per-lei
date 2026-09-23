@@ -78,15 +78,3 @@ export function OpenBadge({ className = '' }: { className?: string }) {
     </p>
   )
 }
-
-export function Stars({ className = '' }: { className?: string }) {
-  return (
-    <span className={`inline-flex gap-0.5 text-oro ${className}`} aria-hidden="true">
-      {Array.from({ length: 5 }, (_, i) => (
-        <svg key={i} viewBox="0 0 24 24" fill="currentColor" className="size-3.5">
-          <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />
-        </svg>
-      ))}
-    </span>
-  )
-}

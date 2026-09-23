@@ -11,7 +11,6 @@ import { Menu } from '#/components/Menu'
 import { MobileBar } from '#/components/MobileBar'
 import { Nav } from '#/components/Nav'
 import { Reservas } from '#/components/Reservas'
-import { Testimonios } from '#/components/Testimonios'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -47,7 +46,6 @@ function Home() {
         <Experiencia />
         <Menu />
         <Galeria />
-        <Testimonios />
         <Eventos />
         <Reservas />
       </main>

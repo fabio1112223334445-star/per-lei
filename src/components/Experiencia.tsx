@@ -95,8 +95,7 @@ export function Experiencia() {
             <div className="mt-6 flex items-start gap-4 md:col-span-6 md:col-start-7 md:mt-0">
               <CarIcon className="mt-1 size-7 shrink-0 text-[#e8d3a4]" />
               <p className="max-w-[44ch] text-lg text-[#f3eadb]/90">
-                Llega en carro sin complicarte. Y quédate: lo que más repiten las reseñas es lo bien que se pasa el
-                rato.
+                Llega en carro sin complicarte y quédate el tiempo que quieras.
               </p>
             </div>
           </article>

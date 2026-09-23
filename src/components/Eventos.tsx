@@ -1,5 +1,4 @@
 import { links, messages } from '#/data/business'
-import { reviews } from '#/data/reviews'
 import { WhatsAppIcon } from './icons'
 import { Photo } from './Photo'
 import { SectionHeading } from './ui'
@@ -10,8 +9,6 @@ const EVENT_TYPES = [
   { title: 'Celebraciones familiares', text: 'Cumpleaños, aniversarios y reuniones con toda la familia.' },
   { title: 'Eventos privados', text: 'Cuéntanos la idea y armamos la propuesta contigo.' },
 ]
-
-const weddingReview = reviews.find((r) => r.author === 'Delia Isaula')
 
 export function Eventos() {
   return (
@@ -37,19 +34,10 @@ export function Eventos() {
           </div>
 
           <div className="flex flex-col justify-between gap-10 md:col-span-5">
-            {weddingReview && (
-              <figure className="reveal">
-                <blockquote className="italiano text-[clamp(1.6rem,5.6vw,2.4rem)] leading-[1.15] tracking-[-0.01em]">
-                  <p>
-                    “Gracias por hacer que el día de nuestra boda fuese tan{' '}
-                    <span className="text-tomate">especial e inolvidable</span>.”
-                  </p>
-                </blockquote>
-                <figcaption className="kicker mt-5 text-ink-muted">
-                  — {weddingReview.author}
-                </figcaption>
-              </figure>
-            )}
+            <p className="reveal italiano text-[clamp(1.6rem,5.6vw,2.4rem)] leading-[1.15] tracking-[-0.01em]">
+              Un espacio amplio, con la montaña de fondo, para el día que quieres{' '}
+              <span className="text-tomate">recordar siempre</span>.
+            </p>
 
             <ul className="reveal">
               {EVENT_TYPES.map((e) => (
