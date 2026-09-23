@@ -6,7 +6,7 @@ export function Reservas() {
   return (
     <section id="reservas" aria-labelledby="reservas-title" className="cv-auto relative py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
-        <SectionHeading num="07" kicker="Reservas y ubicación" italian="ti aspettiamo" id="reservas-title">
+        <SectionHeading italian="ti aspettiamo" id="reservas-title">
           Una mesa <em className="italiano text-tomate">per lei</em>
         </SectionHeading>
 

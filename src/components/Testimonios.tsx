@@ -10,7 +10,7 @@ export function Testimonios() {
     <section aria-labelledby="resenas-title" className="cv-auto relative overflow-hidden bg-surface py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
-          <SectionHeading num="05" kicker="Reseñas" italian="parole di chi è venuto" id="resenas-title" className="md:col-span-7">
+          <SectionHeading italian="parole di chi è venuto" id="resenas-title" className="md:col-span-7">
             Lo que <em className="italiano text-tomate">dicen</em>
           </SectionHeading>
 

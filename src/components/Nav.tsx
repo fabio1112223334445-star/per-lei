@@ -3,11 +3,11 @@ import { links, messages } from '#/data/business'
 import { MenuIcon, XIcon } from './icons'
 
 const NAV = [
-  { href: '#historia', label: 'Historia', num: '01' },
-  { href: '#carta', label: 'Carta', num: '03' },
-  { href: '#galeria', label: 'Galería', num: '04' },
-  { href: '#eventos', label: 'Eventos', num: '06' },
-  { href: '#reservas', label: 'Ubicación', num: '07' },
+  { href: '#historia', label: 'Historia' },
+  { href: '#carta', label: 'Carta' },
+  { href: '#galeria', label: 'Galería' },
+  { href: '#eventos', label: 'Eventos' },
+  { href: '#reservas', label: 'Ubicación' },
 ]
 
 export function Nav() {
@@ -109,7 +109,6 @@ export function Nav() {
                   className="flex min-h-16 items-baseline justify-between py-3"
                 >
                   <span className="display text-[clamp(2.75rem,13vw,4.5rem)]">{item.label}</span>
-                  <span className="kicker text-oro">{item.num}</span>
                 </a>
               </li>
             ))}

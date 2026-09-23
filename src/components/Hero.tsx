@@ -20,10 +20,7 @@ export function Hero() {
       />
 
       <div className="relative mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
-        <div className="fade-in flex flex-wrap items-center justify-between gap-3" style={i(0)}>
-          <p className="kicker text-ink-muted">
-            Pizzería artesanal <span className="text-oro">·</span> Forno a legna
-          </p>
+        <div className="fade-in flex flex-wrap items-center justify-end gap-3 max-md:justify-start" style={i(0)}>
           <OpenBadge />
         </div>
 

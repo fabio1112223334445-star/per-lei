@@ -37,7 +37,7 @@ export function Galeria() {
     <section id="galeria" aria-labelledby="galeria-title" className="cv-auto relative py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
-          <SectionHeading num="04" kicker="Galería" italian="guardare, poi assaggiare" id="galeria-title" className="md:col-span-8">
+          <SectionHeading italian="guardare, poi assaggiare" id="galeria-title" className="md:col-span-8">
             Mesa, fuego <em className="italiano text-tomate">y montaña</em>
           </SectionHeading>
           <p className="reveal max-w-[36ch] text-ink-muted md:col-span-4">

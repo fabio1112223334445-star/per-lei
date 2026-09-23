@@ -210,16 +210,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-@utility outline-num {
-  font-family: var(--font-display);
-  font-variation-settings: "opsz" 144;
-  font-weight: 300;
-  line-height: 0.8;
-  letter-spacing: -0.05em;
-  color: transparent;
-  -webkit-text-stroke: 1.25px var(--oro);
-  font-variant-numeric: lining-nums;
-}
 @utility text-stroke-cream {
   color: transparent;
   -webkit-text-stroke: 1.25px #f3eadb;

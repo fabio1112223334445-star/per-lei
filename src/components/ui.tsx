@@ -35,35 +35,20 @@ export function Cta({ href, children, variant = 'primary', icon, external, class
 }
 
 interface SectionHeadingProps {
-  num: string
-  kicker: string
   italian: string
   children: ReactNode
   id: string
   className?: string
 }
 
-/** Número monumental en contorno dorado + kicker mono + título display. */
-export function SectionHeading({ num, kicker, italian, children, id, className = '' }: SectionHeadingProps) {
+/** Título display + subtítulo en italiano. */
+export function SectionHeading({ italian, children, id, className = '' }: SectionHeadingProps) {
   return (
-    <header className={`relative ${className}`}>
-      <span
-        aria-hidden="true"
-        className="outline-num pointer-events-none absolute -top-[0.18em] -left-[0.06em] select-none text-[clamp(8rem,34vw,20rem)] opacity-90 md:-left-[0.12em]"
-      >
-        {num}
-      </span>
-      <div className="relative pt-[clamp(6rem,30vw,15rem)]">
-        <p className="kicker flex items-center gap-3 text-ink-muted">
-          <span className="text-tomate">N° {num}</span>
-          <span aria-hidden="true" className="h-px w-8 bg-current opacity-40" />
-          <span>{kicker}</span>
-        </p>
-        <h2 id={id} className="display mt-4 text-[clamp(3.25rem,13vw,9.5rem)]">
-          {children}
-        </h2>
-        <p className="italiano mt-3 text-2xl text-tomate md:text-3xl">{italian}</p>
-      </div>
+    <header className={className}>
+      <h2 id={id} className="display text-[clamp(3.25rem,13vw,9.5rem)]">
+        {children}
+      </h2>
+      <p className="italiano mt-3 text-2xl text-tomate md:text-3xl">{italian}</p>
     </header>
   )
 }

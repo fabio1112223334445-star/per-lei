@@ -6,7 +6,6 @@ import { SectionHeading } from './ui'
 const MENTIONS = ['Buena música', 'Espacio amplio', 'Baños limpios', 'Atención al detalle', 'Calidad-precio']
 
 interface Highlight {
-  n: string
   title: React.ReactNode
   text: string
   photo: PhotoId
@@ -14,7 +13,6 @@ interface Highlight {
 
 const HIGHLIGHTS: Highlight[] = [
   {
-    n: 'i.',
     title: (
       <>
         Pizzas <em className="italiano">artesanales</em>
@@ -24,7 +22,6 @@ const HIGHLIGHTS: Highlight[] = [
     photo: 'pizzaMargherita',
   },
   {
-    n: 'ii.',
     title: (
       <>
         Sangría <em className="italiano">&amp;</em> tablas de queso
@@ -34,7 +31,6 @@ const HIGHLIGHTS: Highlight[] = [
     photo: 'sangria',
   },
   {
-    n: 'iii.',
     title: (
       <>
         Vista <em className="italiano">y</em> ambiente
@@ -51,8 +47,6 @@ export function Experiencia() {
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="md:grid md:grid-cols-12">
           <SectionHeading
-            num="02"
-            kicker="La experiencia"
             italian="a tavola, senza fretta"
             id="experiencia-title"
             className="md:col-span-8"
@@ -69,24 +63,22 @@ export function Experiencia() {
             </div>
             <div className="absolute inset-0 z-[3] bg-gradient-to-t from-[#140f0c] via-[#140f0c]/40 to-transparent" />
             <div className="relative z-[4] flex h-full min-h-[inherit] flex-col justify-end p-6 text-[#f3eadb] md:p-10">
-              <span className="italiano text-5xl text-[#d4af6a] md:text-6xl">{HIGHLIGHTS[0].n}</span>
-              <h3 className="display mt-3 text-[clamp(2.75rem,11vw,6rem)]">{HIGHLIGHTS[0].title}</h3>
+              <h3 className="display text-[clamp(2.75rem,11vw,6rem)]">{HIGHLIGHTS[0].title}</h3>
               <p className="mt-4 max-w-[38ch] text-[#f3eadb]/85">{HIGHLIGHTS[0].text}</p>
             </div>
           </article>
 
           {HIGHLIGHTS.slice(1).map((h, idx) => (
             <article
-              key={h.n}
-              className={`reveal grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-stretch gap-5 border-t border-line pt-5 md:col-span-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] ${
+              key={h.photo}
+              className={`reveal grid grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] items-end gap-5 border-t border-line pt-5 md:col-span-5 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] ${
                 idx === 0 ? 'md:mt-0' : 'md:mt-6'
               }`}
             >
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Photo id={h.photo} hideLabel sizes="(min-width: 768px) 18vw, 45vw" />
               </div>
-              <div className="flex flex-col justify-between">
-                <span className="italiano text-4xl text-oro">{h.n}</span>
+              <div>
                 <div>
                   <h3 className="text-[clamp(1.6rem,6vw,2.4rem)] leading-[1.05] tracking-[-0.02em]">{h.title}</h3>
                   <p className="mt-3 text-[0.95rem] text-ink-muted">{h.text}</p>
@@ -98,7 +90,6 @@ export function Experiencia() {
           {/* iv. parqueo: bloque tipográfico que rompe el grid */}
           <article className="reveal relative overflow-hidden bg-[#2e5a39] p-6 text-[#f3eadb] md:col-span-12 md:-mx-6 md:mt-10 md:grid md:grid-cols-12 md:items-center md:p-10 lg:-mx-10">
             <div className="flex items-center gap-4 md:col-span-5">
-              <span className="italiano text-5xl text-[#e8d3a4]">iv.</span>
               <h3 className="display text-[clamp(3rem,12vw,7rem)]">Parqueo</h3>
             </div>
             <div className="mt-6 flex items-start gap-4 md:col-span-6 md:col-start-7 md:mt-0">

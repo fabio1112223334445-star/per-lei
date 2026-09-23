@@ -25,7 +25,7 @@ export function Eventos() {
       </p>
 
       <div className="relative z-[2] mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
-        <SectionHeading num="06" kicker="Eventos" italian="per sempre" id="eventos-title">
+        <SectionHeading italian="per sempre" id="eventos-title">
           Bodas <em className="italiano text-tomate">y</em>
           <br />
           celebraciones
@@ -52,9 +52,8 @@ export function Eventos() {
             )}
 
             <ul className="reveal">
-              {EVENT_TYPES.map((e, i) => (
-                <li key={e.title} className="grid grid-cols-[2.5rem_1fr] gap-3 border-t border-line py-5">
-                  <span className="font-mono text-sm text-oro">0{i + 1}</span>
+              {EVENT_TYPES.map((e) => (
+                <li key={e.title} className="border-t border-line py-5">
                   <div>
                     <h3 className="text-2xl tracking-[-0.01em]">{e.title}</h3>
                     <p className="mt-1 text-[0.95rem] text-ink-muted">{e.text}</p>

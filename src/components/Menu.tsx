@@ -9,16 +9,13 @@ import { SectionHeading } from './ui'
 const EASE = [0.16, 1, 0.3, 1] as const
 const loadFeatures = () => import('#/lib/motion-features').then((mod) => mod.default)
 
-function FeaturedCard({ item, index }: { item: MenuItem; index: number }) {
+function FeaturedCard({ item }: { item: MenuItem }) {
   return (
     <article className="press group relative flex flex-col bg-surface shadow-vela">
       <div className="relative aspect-[4/3] overflow-hidden">
         <div className="absolute inset-0 transition-transform duration-700 ease-out-expo group-hover:scale-[1.04]">
           {item.photo && <Photo id={item.photo} sizes="(min-width: 768px) 30vw, 85vw" />}
         </div>
-        <span className="kicker absolute top-3 right-3 z-[3] rounded-full bg-[#f3eadb] px-2.5 py-1 text-[0.65rem] text-[#1c1714]">
-          N° {String(index + 1).padStart(2, '0')}
-        </span>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-5 md:p-6">
         <div className="flex items-baseline justify-between gap-4">
@@ -69,7 +66,7 @@ export function Menu() {
     <section id="carta" aria-labelledby="carta-title" className="cv-auto relative bg-surface py-20 md:py-32">
       <div className="mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
-          <SectionHeading num="03" kicker="La carta" italian="dal forno alla tavola" id="carta-title" className="md:col-span-7">
+          <SectionHeading italian="dal forno alla tavola" id="carta-title" className="md:col-span-7">
             La <em className="italiano text-tomate">carta</em>
           </SectionHeading>
 
@@ -148,9 +145,9 @@ export function Menu() {
                   <h3 className="sr-only">{category.label}</h3>
                   {featured.length > 0 && (
                     <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
-                      {featured.map((item, i) => (
+                      {featured.map((item) => (
                         <div key={item.name} className="w-[82%] shrink-0 snap-start md:w-auto">
-                          <FeaturedCard item={item} index={i} />
+                          <FeaturedCard item={item} />
                         </div>
                       ))}
                     </div>

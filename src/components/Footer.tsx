@@ -66,7 +66,6 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {business.name} · Santa Lucía, Francisco Morazán, Honduras
           </p>
-          <p>Pizzería artesanal · Forno a legna</p>
         </div>
       </div>
     </footer>
