@@ -5,8 +5,14 @@
 
 export const TIMEZONE = 'America/Tegucigalpa'
 
-/** 0 = domingo … 6 = sábado. Horas en formato 24h, hora de Honduras. */
-export interface DayHours {
+/**
+ * URL pública del sitio: canonical, Open Graph, JSON-LD, sitemap y robots.
+ * TODO: reemplazar por el dominio real cuando exista (y agregarlo en Vercel → Domains).
+ */
+export const SITE_URL = 'https://per-lei.vercel.app'
+
+/** Horas en formato 24h, hora de Honduras. */
+export interface Hours {
   open: string
   close: string
 }
@@ -17,8 +23,7 @@ export const business = {
   tagline: 'Pizza de leña, fatta a mano, en el corazón colonial de Santa Lucía.',
   description:
     'Pizzería artesanal de horno de leña en Santa Lucía, Francisco Morazán. Pizzas hechas a mano, sangría, tablas de queso y un espacio amplio con vista para compartir en familia, bodas y celebraciones.',
-  // TODO: reemplazar por el dominio definitivo antes de publicar (se usa en canonical, OG y JSON-LD).
-  url: 'https://perlei.hn',
+  url: SITE_URL,
 
   address: {
     street: 'A 50 mts del antiguo cabildo municipal',
@@ -46,19 +51,12 @@ export const business = {
   priceRange: { min: 200, max: 800, currency: 'HNL', symbol: 'L' },
   services: ['Comer en el local', 'Para llevar', 'Delivery'] as const,
 
-  // TODO: confirmar días de apertura. Solo se sabe que abre 12:00 PM y cierra 8:00 PM;
-  // por ahora se asume todos los días. Poner `null` en los días que cierre.
-  hours: {
-    0: { open: '12:00', close: '20:00' },
-    1: { open: '12:00', close: '20:00' },
-    2: { open: '12:00', close: '20:00' },
-    3: { open: '12:00', close: '20:00' },
-    4: { open: '12:00', close: '20:00' },
-    5: { open: '12:00', close: '20:00' },
-    6: { open: '12:00', close: '20:00' },
-  } as Record<number, DayHours | null>,
-  // TODO: texto de horario visible; actualizar cuando se confirmen los días.
-  hoursLabel: 'Todos los días · 12:00 PM – 8:00 PM',
+  // Horario confirmado: abre 12:00 PM y cierra 8:00 PM. El indicador "Abierto ahora" usa solo estas horas.
+  hours: { open: '12:00', close: '20:00' } as Hours,
+  // TODO: confirmar qué días abre. Formato: 0 = domingo … 6 = sábado, p. ej. [2, 3, 4, 5, 6, 0].
+  // Mientras sea `null` no se muestran días, el indicador no los considera y el JSON-LD omite el horario.
+  openDays: null as number[] | null,
+  hoursLabel: '12:00 PM – 8:00 PM',
 
   // TODO: completar enlaces reales (Linktree, Instagram, Facebook, TikTok). Vacíos = no se muestran.
   social: {

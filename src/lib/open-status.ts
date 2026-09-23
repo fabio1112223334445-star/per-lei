@@ -35,21 +35,30 @@ function nowInHonduras(date = new Date()) {
   return { day: WEEKDAY_INDEX[get('weekday')] ?? 0, minutes: Number(get('hour')) * 60 + Number(get('minute')) }
 }
 
+/**
+ * Estado según la hora de Honduras. Mientras `business.openDays` sea null (días sin confirmar)
+ * solo se comparan las horas; cuando se definan los días, también se respetan.
+ */
 export function getOpenStatus(date = new Date()): OpenStatus {
   const { day, minutes } = nowInHonduras(date)
-  const today = business.hours[day]
+  const { open, close } = business.hours
+  const days = business.openDays
+  const opensToday = !days || days.includes(day)
+  const opensAt = formatHour(open)
 
-  if (today && minutes >= toMinutes(today.open) && minutes < toMinutes(today.close)) {
-    return { open: true, label: 'Abierto ahora', detail: `cierra a las ${formatHour(today.close)}` }
+  if (opensToday && minutes >= toMinutes(open) && minutes < toMinutes(close)) {
+    return { open: true, label: 'Abierto ahora', detail: `cierra a las ${formatHour(close)}` }
   }
-  if (today && minutes < toMinutes(today.open)) {
-    return { open: false, label: 'Cerrado', detail: `abre hoy a las ${formatHour(today.open)}` }
+  if (opensToday && minutes < toMinutes(open)) {
+    return { open: false, label: 'Cerrado', detail: `abre ${days ? 'hoy ' : ''}a las ${opensAt}` }
   }
+  if (!days) return { open: false, label: 'Cerrado', detail: `abre a las ${opensAt}` }
+
   for (let i = 1; i <= 7; i++) {
-    const next = business.hours[(day + i) % 7]
-    if (next) {
-      const when = i === 1 ? 'mañana' : `el ${DAYS[(day + i) % 7]}`
-      return { open: false, label: 'Cerrado', detail: `abre ${when} a las ${formatHour(next.open)}` }
+    const next = (day + i) % 7
+    if (days.includes(next)) {
+      const when = i === 1 ? 'mañana' : `el ${DAYS[next]}`
+      return { open: false, label: 'Cerrado', detail: `abre ${when} a las ${opensAt}` }
     }
   }
   return { open: false, label: 'Cerrado', detail: 'consulta el horario' }

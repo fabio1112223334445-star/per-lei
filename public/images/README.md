@@ -20,4 +20,4 @@ Si usas otra extensión, cambia también `src` en gallery.ts.
 | postre.jpg | Carta, galería | 1:1 |
 | parqueo.jpg | (reservada) | 4:3 |
 
-También falta `/public/og.jpg` (1200×630) para compartir en redes.
+La imagen para redes (`/public/og.jpg`, 1200×630) se genera con `npm run og` desde `scripts/og/og.html`.

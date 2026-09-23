@@ -6,7 +6,7 @@ import { business } from '#/data/business'
 import appCss from '../styles.css?inline'
 
 const title = 'Per Lei — Pizzería artesanal de leña en Santa Lucía, Honduras'
-const ogImage = `${business.url}/og.jpg` // TODO: crear /public/og.jpg (1200×630) con foto real del horno o una pizza
+const ogImage = `${business.url}/og.jpg` // generada con `npm run og` (scripts/og)
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -30,14 +30,17 @@ const jsonLd = {
     addressCountry: business.address.country,
   },
   geo: { '@type': 'GeoCoordinates', latitude: business.geo.lat, longitude: business.geo.lng },
-  openingHoursSpecification: Object.entries(business.hours)
-    .filter(([, h]) => h)
-    .map(([day, h]) => ({
+  // Sin días confirmados no se publica el horario (schema.org exige dayOfWeek). Ver business.openDays.
+  ...(business.openDays && {
+    openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: `https://schema.org/${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][Number(day)]}`,
-      opens: h!.open,
-      closes: h!.close,
-    })),
+      dayOfWeek: business.openDays.map(
+        (d) => `https://schema.org/${['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][d]}`,
+      ),
+      opens: business.hours.open,
+      closes: business.hours.close,
+    },
+  }),
   aggregateRating: {
     '@type': 'AggregateRating',
     ratingValue: business.rating.value,
@@ -66,6 +69,7 @@ export const Route = createRootRoute({
       { property: 'og:description', content: business.description },
       { property: 'og:url', content: business.url },
       { property: 'og:image', content: ogImage },
+      { property: 'og:image:alt', content: 'Per Lei — pizzería artesanal de leña en Santa Lucía' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
       { name: 'twitter:card', content: 'summary_large_image' },
