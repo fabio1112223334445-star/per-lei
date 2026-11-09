@@ -66,14 +66,14 @@ export function Hero() {
         className="par-glow pointer-events-none absolute top-[8%] right-[-20%] size-[120vw] rounded-full bg-[radial-gradient(closest-side,var(--glow),transparent)] md:right-[-5%] md:size-[60vw]"
       />
 
-      <div className="relative mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
-        <h1 id="hero-title" className="relative mt-4 grid md:mt-2">
+      <div className="relative mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10 [--arch-x:1.9em]">
+        <h1 id="hero-title" className="relative mt-4 grid md:mt-2 md:text-[min(19vw,19rem)]">
           <span className="sr-only">Per Lei — pizzería artesanal de leña en Santa Lucía</span>
 
           {/* capa 2: arco colonial con el horno, y las brasas que salen de él */}
           <span
             aria-hidden="true"
-            className="par-arch relative z-10 col-start-1 row-start-1 mt-[16vw] aspect-[3/4] w-[56%] justify-self-end md:mt-0 md:mr-[4%] md:w-[28%]"
+            className="par-arch relative z-10 col-start-1 row-start-1 mt-[16vw] aspect-[3/4] w-[56%] justify-self-end md:mt-0 md:ml-[var(--arch-x)] md:w-[1.5em] md:justify-self-start"
           >
             <span className="fade-in arch block h-full w-full overflow-hidden shadow-vela" style={i(3)}>
               <Photo id="heroHorno" priority sizes="(min-width: 768px) 31vw, 56vw" artClassName="relative z-0 mt-[20%] h-1/2 w-3/4" />
@@ -88,7 +88,7 @@ export function Hero() {
           {/* "Per" delante */}
           <span
             aria-hidden="true"
-            className="par-per display line-mask relative z-20 col-start-1 row-start-1 self-start justify-self-start text-[40vw] md:text-[min(19vw,19rem)]"
+            className="par-per display line-mask relative z-20 col-start-1 row-start-1 self-start justify-self-start text-[40vw] md:text-[1em]"
           >
             <span style={i(0)}>Per</span>
           </span>
@@ -96,28 +96,29 @@ export function Hero() {
           {/* "Lei": relleno tomate que pasa por detrás del arco… */}
           <span
             aria-hidden="true"
-            className="par-lei italiano line-mask relative z-0 col-start-1 row-start-1 ml-[14vw] self-end justify-self-start pr-[0.1em] text-[40vw] leading-[0.86] tracking-[0.01em] text-tomate md:mb-[2%] md:ml-[56%] md:text-[min(19vw,19rem)]"
+            className="par-lei italiano line-mask relative z-0 col-start-1 row-start-1 ml-[14vw] self-end justify-self-start pr-[0.1em] text-[40vw] leading-[0.86] tracking-[0.01em] text-tomate md:mb-[0.3em] md:ml-[1.15em] md:text-[1em]"
           >
             <span style={i(1)}>Lei</span>
           </span>
           {/* …y su contorno crema continúa por encima de la foto */}
           <span
             aria-hidden="true"
-            className="par-lei italiano line-mask text-stroke-cream relative z-20 col-start-1 row-start-1 ml-[14vw] self-end justify-self-start pr-[0.1em] text-[40vw] leading-[0.86] tracking-[0.01em] md:mb-[2%] md:ml-[56%] md:text-[min(19vw,19rem)]"
+            className="par-lei italiano line-mask text-stroke-cream relative z-20 col-start-1 row-start-1 ml-[14vw] self-end justify-self-start pr-[0.1em] text-[40vw] leading-[0.86] tracking-[0.01em] md:mb-[0.3em] md:ml-[1.15em] md:text-[1em]"
           >
             <span style={i(1)}>Lei</span>
           </span>
         </h1>
 
-        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-12 md:items-end">
+        {/* Misma escala que el wordmark: la columna de CTAs arranca justo en el borde del arco */}
+        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-[var(--arch-x)_auto] md:items-end md:gap-0 md:text-[min(19vw,19rem)]">
           <p
-            className="fade-in font-display text-[clamp(1.6rem,6.4vw,2.6rem)] leading-[1.08] tracking-[-0.02em] md:col-span-7 lg:col-span-6 [font-variation-settings:'opsz'_72]"
+            className="fade-in font-display text-[clamp(1.6rem,6.4vw,2.6rem)] leading-[1.08] tracking-[-0.02em] text-balance md:pr-10 md:text-[clamp(1.6rem,2.6vw,2.6rem)] [font-variation-settings:'opsz'_72]"
             style={i(4)}
           >
-            Pizza de leña, <em className="italiano text-tomate">fatta a mano</em>, en el corazón colonial de Santa Lucía.
+            Pizza de leña, <em className="italiano whitespace-nowrap text-tomate">fatta a mano</em>, en el corazón colonial de Santa Lucía.
           </p>
 
-          <div className="fade-in flex flex-col gap-5 md:col-span-5 md:col-start-8" style={i(5)}>
+          <div className="fade-in flex flex-col gap-5 text-base" style={i(5)}>
             <OpenBadge className="self-start" />
             <div className="grid grid-cols-2 gap-3 sm:flex">
               <Cta href={links.tel} icon={<PhoneIcon className="size-[1.1rem]" />}>
