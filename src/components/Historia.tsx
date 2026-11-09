@@ -64,7 +64,7 @@ export function Historia() {
             ))}
           </ol>
 
-          <div className="reveal relative mt-14 ml-auto aspect-square w-3/4 overflow-hidden md:mt-20 md:w-2/3">
+          <div className="reveal relative mx-auto mt-14 aspect-square w-3/4 overflow-hidden md:mt-20 md:w-2/3">
             <Photo id="historiaMasa" sizes="(min-width: 768px) 30vw, 75vw" />
           </div>
         </div>

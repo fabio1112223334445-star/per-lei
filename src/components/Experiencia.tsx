@@ -3,8 +3,6 @@ import { CarIcon } from './icons'
 import { Photo } from './Photo'
 import { SectionHeading } from './ui'
 
-const MENTIONS = ['Buena música', 'Espacio amplio', 'Baños limpios', 'Atención al detalle', 'Calidad-precio']
-
 interface Highlight {
   title: React.ReactNode
   text: string
@@ -101,16 +99,6 @@ export function Experiencia() {
           </article>
         </div>
 
-        <div className="reveal mt-12 md:mt-16">
-          <p className="kicker text-ink-muted">Lo que más mencionan nuestros clientes</p>
-          <ul className="mt-4 flex flex-wrap gap-2">
-            {MENTIONS.map((m) => (
-              <li key={m} className="rounded-full border border-line px-4 py-2 text-sm">
-                {m}
-              </li>
-            ))}
-          </ul>
-        </div>
       </div>
     </section>
   )

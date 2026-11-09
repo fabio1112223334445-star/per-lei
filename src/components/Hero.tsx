@@ -66,14 +66,14 @@ export function Hero() {
         className="par-glow pointer-events-none absolute top-[8%] right-[-20%] size-[120vw] rounded-full bg-[radial-gradient(closest-side,var(--glow),transparent)] md:right-[-5%] md:size-[60vw]"
       />
 
-      <div className="relative mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10 [--arch-x:1.9em]">
+      <div className="relative mx-auto max-w-[92rem] px-4 sm:px-6 lg:px-10">
         <h1 id="hero-title" className="relative mt-4 grid md:mt-2 md:text-[min(19vw,19rem)]">
           <span className="sr-only">Per Lei — pizzería artesanal de leña en Santa Lucía</span>
 
           {/* capa 2: arco colonial con el horno, y las brasas que salen de él */}
           <span
             aria-hidden="true"
-            className="par-arch relative z-10 col-start-1 row-start-1 mt-[16vw] aspect-[3/4] w-[56%] justify-self-end md:mt-0 md:ml-[var(--arch-x)] md:w-[1.5em] md:justify-self-start"
+            className="par-arch relative z-10 col-start-1 row-start-1 mt-[16vw] aspect-[3/4] w-[56%] justify-self-end md:mt-0 md:mr-[4%] md:w-[28%] md:text-base"
           >
             <span className="fade-in arch block h-full w-full overflow-hidden shadow-vela" style={i(3)}>
               <Photo id="heroHorno" priority sizes="(min-width: 768px) 31vw, 56vw" artClassName="relative z-0 mt-[20%] h-1/2 w-3/4" />
@@ -109,18 +109,18 @@ export function Hero() {
           </span>
         </h1>
 
-        {/* Misma escala que el wordmark: la columna de CTAs arranca justo en el borde del arco */}
-        <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-[var(--arch-x)_auto] md:items-end md:gap-0 md:text-[min(19vw,19rem)]">
+        {/* Horario y botones centrados bajo el arco (mismo ancho y margen que el arco) */}
+        <div className="mt-8 flex flex-col gap-8 md:mt-10 md:flex-row md:items-end md:justify-between">
           <p
-            className="fade-in font-display text-[clamp(1.6rem,6.4vw,2.6rem)] leading-[1.08] tracking-[-0.02em] text-balance md:pr-10 md:text-[clamp(1.6rem,2.6vw,2.6rem)] [font-variation-settings:'opsz'_72]"
+            className="fade-in font-display text-[clamp(1.6rem,6.4vw,2.6rem)] leading-[1.08] tracking-[-0.02em] text-balance md:max-w-[58%] md:pr-10 md:text-[clamp(1.6rem,2.6vw,2.6rem)] [font-variation-settings:'opsz'_72]"
             style={i(4)}
           >
             Pizza de leña, <em className="italiano whitespace-nowrap text-tomate">fatta a mano</em>, en el corazón colonial de Santa Lucía.
           </p>
 
-          <div className="fade-in flex flex-col gap-5 text-base" style={i(5)}>
-            <OpenBadge className="self-start" />
-            <div className="grid grid-cols-2 gap-3 sm:flex">
+          <div className="fade-in flex flex-col gap-5 md:mr-[4%] md:w-[28%] md:shrink-0 md:items-center" style={i(5)}>
+            <OpenBadge className="self-start whitespace-nowrap md:w-max md:self-center" />
+            <div className="grid grid-cols-2 gap-3 whitespace-nowrap sm:flex md:w-max">
               <Cta href={links.tel} icon={<PhoneIcon className="size-[1.1rem]" />}>
                 Llamar
               </Cta>
